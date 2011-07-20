@@ -143,6 +143,35 @@ function site_sito_content_types_views_default_views() {
   $handler->display->display_options['fields']['longitude']['hide_empty'] = 0;
   $handler->display->display_options['fields']['longitude']['empty_zero'] = 0;
   $handler->display->display_options['fields']['longitude']['style'] = 'dd';
+  /* Field: Node: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
+  /* Field: Content: Leiepris pr måned (field_leiepris) */
+  $handler->display->display_options['fields']['field_leiepris_value']['id'] = 'field_leiepris_value';
+  $handler->display->display_options['fields']['field_leiepris_value']['table'] = 'node_data_field_leiepris';
+  $handler->display->display_options['fields']['field_leiepris_value']['field'] = 'field_leiepris_value';
+  $handler->display->display_options['fields']['field_leiepris_value']['label'] = 'Leiepris pr måned';
+  $handler->display->display_options['fields']['field_leiepris_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_leiepris_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_leiepris_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_leiepris_value']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_leiepris_value']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_leiepris_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_leiepris_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_leiepris_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_leiepris_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_leiepris_value']['link_to_node'] = 0;
   /* Filter: Node: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';

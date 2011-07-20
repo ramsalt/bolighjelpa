@@ -522,6 +522,58 @@ Uten internett',
     ),
   );
 
+  // Exported field: field_koordinater_value
+  $fields['bolig-field_koordinater_value'] = array(
+    'field_name' => 'field_koordinater_value',
+    'type_name' => 'bolig',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'computed',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'computed_field',
+    'active' => '1',
+    'code' => '$node_field[0][\'value\'] = $node->location[\'latitude\'].\',\'.$node->location[\'longitude\'];
+dpm($node);',
+    'display_format' => '$display = $node_field_item[\'value\'];',
+    'store' => 1,
+    'data_type' => 'varchar',
+    'data_length' => '255',
+    'data_not_NULL' => 0,
+    'data_default' => '',
+    'data_sortable' => 1,
+    'widget' => array(
+      'default_value' => NULL,
+      'default_value_php' => NULL,
+      'label' => 'Koordinater',
+      'weight' => '20',
+      'description' => '',
+      'type' => 'computed',
+      'module' => 'computed_field',
+    ),
+  );
+
   // Exported field: field_kvadratmeter
   $fields['bolig-field_kvadratmeter'] = array(
     'field_name' => 'field_kvadratmeter',
@@ -1865,6 +1917,7 @@ Ikke studerenede',
   t('Fødselsår');
   t('Førstesemesterstudent');
   t('Gatenummer');
+  t('Koordinater');
   t('Kvadratmeter');
   t('Leiepris merknader');
   t('Leiepris pr måned');
