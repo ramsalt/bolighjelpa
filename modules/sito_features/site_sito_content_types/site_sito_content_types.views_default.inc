@@ -100,22 +100,6 @@ function site_sito_content_types_views_default_views() {
   $handler->display->display_options['fields']['field_moblering_value']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_moblering_value']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_moblering_value']['link_to_node'] = 0;
-  /* Field: Content: Koordinat (field_koordinater) */
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['id'] = 'field_koordinater_openlayers_wkt';
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['table'] = 'node_data_field_koordinater';
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['field'] = 'field_koordinater_openlayers_wkt';
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['label'] = 'Koordinat';
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['link_to_node'] = 0;
-  $handler->display->display_options['fields']['field_koordinater_openlayers_wkt']['format'] = 'openlayers_wkt';
   /* Field: Content: Adresse (field_adresse) */
   $handler->display->display_options['fields']['field_adresse_value']['id'] = 'field_adresse_value';
   $handler->display->display_options['fields']['field_adresse_value']['table'] = 'node_data_field_adresse';
@@ -131,6 +115,34 @@ function site_sito_content_types_views_default_views() {
   $handler->display->display_options['fields']['field_adresse_value']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_adresse_value']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_adresse_value']['link_to_node'] = 0;
+  /* Field: Location: Latitude */
+  $handler->display->display_options['fields']['latitude']['id'] = 'latitude';
+  $handler->display->display_options['fields']['latitude']['table'] = 'location';
+  $handler->display->display_options['fields']['latitude']['field'] = 'latitude';
+  $handler->display->display_options['fields']['latitude']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['latitude']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['latitude']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['latitude']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['latitude']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['latitude']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['latitude']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['latitude']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['latitude']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['latitude']['style'] = 'dd';
+  /* Field: Location: Longitude */
+  $handler->display->display_options['fields']['longitude']['id'] = 'longitude';
+  $handler->display->display_options['fields']['longitude']['table'] = 'location';
+  $handler->display->display_options['fields']['longitude']['field'] = 'longitude';
+  $handler->display->display_options['fields']['longitude']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['longitude']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['longitude']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['longitude']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['longitude']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['longitude']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['longitude']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['longitude']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['longitude']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['longitude']['style'] = 'dd';
   /* Filter: Node: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';

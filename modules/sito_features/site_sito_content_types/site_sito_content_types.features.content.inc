@@ -522,68 +522,6 @@ Uten internett',
     ),
   );
 
-  // Exported field: field_koordinater
-  $fields['bolig-field_koordinater'] = array(
-    'field_name' => 'field_koordinater',
-    'type_name' => 'bolig',
-    'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'openlayers_wkt',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'openlayers_cck',
-    'active' => '1',
-    'openlayers_cck_feature_types' => array(
-      'point' => 'point',
-      'path' => 0,
-      'polygon' => 0,
-    ),
-    'widget' => array(
-      'openlayers_cck_preset_map' => 'default',
-      'openlayers_behaviors' => array(
-        'openlayers_behavior_zoomtolayer' => array(
-          'enabled' => 1,
-          'options' => array(
-            'zoomtolayer' => 'openlayers_cck_vector_layer',
-            'point_zoom_level' => '12',
-          ),
-        ),
-      ),
-      'default_value' => array(
-        '0' => array(
-          'openlayers_wkt' => '',
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Koordinat',
-      'weight' => '7',
-      'description' => '',
-      'type' => 'openlayers_wkt_widget',
-      'module' => 'openlayers_cck',
-    ),
-  );
-
   // Exported field: field_kvadratmeter
   $fields['bolig-field_kvadratmeter'] = array(
     'field_name' => 'field_kvadratmeter',
@@ -832,60 +770,6 @@ Plenty av parkeringsmuligheter',
       'weight' => '12',
       'description' => '',
       'type' => 'optionwidgets_select',
-      'module' => 'optionwidgets',
-    ),
-  );
-
-  // Exported field: field_use_adress_field
-  $fields['bolig-field_use_adress_field'] = array(
-    'field_name' => 'field_use_adress_field',
-    'type_name' => 'bolig',
-    'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'token' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-    ),
-    'widget_active' => '1',
-    'type' => 'number_integer',
-    'required' => '0',
-    'multiple' => '0',
-    'module' => 'number',
-    'active' => '1',
-    'prefix' => '',
-    'suffix' => '',
-    'min' => '',
-    'max' => '',
-    'allowed_values' => '0
-1|Bruk adressefeltet til å autoplassere bolig på kart',
-    'allowed_values_php' => '',
-    'widget' => array(
-      'default_value' => array(
-        '0' => array(
-          'value' => 1,
-        ),
-      ),
-      'default_value_php' => NULL,
-      'label' => 'Bruk adresse',
-      'weight' => '6',
-      'description' => '',
-      'type' => 'optionwidgets_onoff',
       'module' => 'optionwidgets',
     ),
   );
@@ -1973,7 +1857,6 @@ Ikke studerenede',
   t('Bad');
   t('Boligtype');
   t('Bredbånd');
-  t('Bruk adresse');
   t('Dato registrert');
   t('Dato tildelt');
   t('Despositum');
@@ -1982,7 +1865,6 @@ Ikke studerenede',
   t('Fødselsår');
   t('Førstesemesterstudent');
   t('Gatenummer');
-  t('Koordinat');
   t('Kvadratmeter');
   t('Leiepris merknader');
   t('Leiepris pr måned');

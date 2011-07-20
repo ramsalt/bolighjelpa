@@ -563,14 +563,6 @@ function site_bolighjelpa_user_default_permissions() {
     ),
   );
 
-  // Exported permission: edit field_koordinater
-  $permissions['edit field_koordinater'] = array(
-    'name' => 'edit field_koordinater',
-    'roles' => array(
-      '0' => 'authenticated user',
-    ),
-  );
-
   // Exported permission: edit field_kvadratmeter
   $permissions['edit field_kvadratmeter'] = array(
     'name' => 'edit field_kvadratmeter',
@@ -705,14 +697,6 @@ function site_bolighjelpa_user_default_permissions() {
     'roles' => array(
       '0' => 'anonymous user',
       '1' => 'authenticated user',
-    ),
-  );
-
-  // Exported permission: edit field_use_adress_field
-  $permissions['edit field_use_adress_field'] = array(
-    'name' => 'edit field_use_adress_field',
-    'roles' => array(
-      '0' => 'authenticated user',
     ),
   );
 
@@ -1031,15 +1015,6 @@ function site_bolighjelpa_user_default_permissions() {
     ),
   );
 
-  // Exported permission: view field_koordinater
-  $permissions['view field_koordinater'] = array(
-    'name' => 'view field_koordinater',
-    'roles' => array(
-      '0' => 'anonymous user',
-      '1' => 'authenticated user',
-    ),
-  );
-
   // Exported permission: view field_kvadratmeter
   $permissions['view field_kvadratmeter'] = array(
     'name' => 'view field_kvadratmeter',
@@ -1154,12 +1129,6 @@ function site_bolighjelpa_user_default_permissions() {
   // Exported permission: view field_studiested
   $permissions['view field_studiested'] = array(
     'name' => 'view field_studiested',
-    'roles' => array(),
-  );
-
-  // Exported permission: view field_use_adress_field
-  $permissions['view field_use_adress_field'] = array(
-    'name' => 'view field_use_adress_field',
     'roles' => array(),
   );
 

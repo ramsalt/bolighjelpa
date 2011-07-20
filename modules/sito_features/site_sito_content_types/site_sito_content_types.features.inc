@@ -8,6 +8,9 @@ function site_sito_content_types_ctools_plugin_api() {
   if ($module == "boxes" && $api == "box") {
     return array("version" => 1);
   }
+  elseif ($module == "context" && $api == "context") {
+    return array("version" => 3);
+  }
   elseif ($module == "page_manager" && $api == "pages_default") {
     return array("version" => 1);
   }
