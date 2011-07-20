@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Module installation/uninstallation hooks.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function addresses_names_install() {
+  if (module_exists('addresses_user')) {
+    module_load_include('module', 'addresses_user');
+    addresses_user_new_install();
+  }
+}
+
+// vim: ts=2 sw=2 et syntax=php

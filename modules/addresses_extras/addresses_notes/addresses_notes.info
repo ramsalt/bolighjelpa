@@ -1,0 +1,13 @@
+core            = "6.x"
+package         = Addresses
+description     = "Defines one notes field on addresses"
+dependencies[]  = addresses
+name            = "Notes"
+
+
+; Information added by drupal.org packaging script on 2011-02-25
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "addresses_extras"
+datestamp = "1298618798"
+

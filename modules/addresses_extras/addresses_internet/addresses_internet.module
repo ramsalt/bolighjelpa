@@ -1,0 +1,277 @@
+<?php
+/**
+ * @author Alexis Wilke
+ * @file addresses_internet.module
+ * User Internet contact information fields on addresses.
+ */
+
+/**
+ * Implementation of hook_addressfieldapi().
+ *
+ * Its a specific Addresses module hook function, to
+ * allow other modules to add more fields to the addresses
+ */
+function addresses_internet_addressesfieldapi($op, $fields = array(), $values = array()) {
+  if ($op == 'fields') {
+    return array(
+      'website' => array(
+        'module'      => 'internet',
+        'type'        => 'text',
+        'description' => t('Your website.'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Website'),
+        'theme'       => array(
+          'website'   => t('Website.'),
+        ),
+        'token'       => 'addresses_general',
+      ),
+      'contact_email' => array(
+        'module'      => 'internet',
+        'type'        => 'text',
+        'description' => t('A public email address.'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Public Email'),
+        'theme'       => array(
+          'contact_email'    => t('Contact Email (public).'),
+        ),
+        'token'       => 'addresses_general',
+      ),
+      'aim' => array(
+        'module'      => 'internet',
+        'type'        => 'text',
+        'description' => t('AIM'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('AIM'),
+        'theme'       => array(
+          'aim'          => t('AIM.'),
+        ),
+        'token'       => 'addresses_general',
+      ),
+      'yahoo_im' => array(
+        'module'      => 'internet',
+        'type'        => 'text',
+        'description' => t('Yahoo IM'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Yahoo IM'),
+        'theme'       => array(
+          'yahoo_im'     => t('Yahoo! IM'),
+        ),
+        'token'       => 'addresses_adr',
+      ),
+      'icq_uin' => array(
+        'module'      => 'internet',
+        'type'        => 'text',
+        'description' => t('ICQ UIN'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('ICQ UIN'),
+        'theme'       => array(
+          'icq_uin'     => t('ICQ UIN'),
+        ),
+        'token'       => 'addresses_adr',
+      ),
+      'jabber' => array(
+        'module'      => 'internet',
+        'type'        => 'text',
+        'description' => t('Jabber/Google Talk'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Jabber/Google Talk'),
+        'theme'       => array(
+          'jabber'     => t('Jabber/Google Talk'),
+        ),
+        'token'       => 'addresses_adr',
+      ),
+      'skype' => array(
+        'module'      => 'internet',
+        'type'        => 'text',
+        'description' => t('Skype'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Skype'),
+        'theme'       => array(
+          'jabber'     => t('Skype'),
+        ),
+        'token'       => 'addresses_adr',
+      ),
+    );
+  }
+  elseif ($op == 'form') {
+    $field_weights = variable_get('addresses_field_weight', array());
+
+    // Website
+    if ($fields['website'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['website'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['website']) ? $values['website'] : '',
+      );
+    }
+    elseif (!empty($fields['website'])) {
+      $form['website'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Website'),
+        '#description'    => t('Your website URL. Please, save and then test it to make sure it works!'),
+        '#default_value'  => isset($values['website']) ? $values['website'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 255,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['website'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['website']['weight']) ? 0 : $field_weights['website']['weight'],
+      );
+    }
+
+    // Last name
+    if ($fields['contact_email'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['contact_email'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['contact_email']) ? $values['contact_email'] : '',
+      );
+    }
+    elseif (!empty($fields['contact_email'])) {
+      $form['contact_email'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Contact Email'),
+        '#description'    => t('This email will be made public. So do not use a private email address in this field. You can leave blank.'),
+        '#default_value'  => isset($values['contact_email']) ? $values['contact_email'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 255,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['contact_email'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['contact_email']['weight']) ? 0 : $field_weights['contact_email']['weight'],
+      );
+    }
+
+    // AIM
+    if ($fields['aim'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['aim'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['aim']) ? $values['aim'] : '',
+      );
+    }
+    elseif (!empty($fields['alias'])) {
+      $form['aim'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('AIM'),
+        '#default_value'  => isset($values['aim']) ? $values['aim'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 255,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['aim'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['aim']['weight']) ? 0 : $field_weights['aim']['weight'],
+      );
+    }
+
+    // Yahoo! IM
+    if ($fields['yahoo_im'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['yahoo_im'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['yahoo_im']) ? $values['yahoo_im'] : '',
+      );
+    }
+    elseif (!empty($fields['yahoo_im'])) {
+      $form['yahoo_im'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Yahoo! IM'),
+        '#default_value'  => isset($values['yahoo_im']) ? $values['yahoo_im'] : '',
+        '#size'           => 50,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['yahoo_im'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['yahoo_im']['weight']) ? 0 : $field_weights['yahoo_im']['weight'],
+      );
+    }
+
+    // ICQ UIN
+    if ($fields['icq_uin'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['icq_uin'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['icq_uin']) ? $values['icq_uin'] : '',
+      );
+    }
+    elseif (!empty($fields['icq_uin'])) {
+      $form['icq_uin'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('ICQ UIN'),
+        '#default_value'  => isset($values['icq_uin']) ? $values['icq_uin'] : '',
+        '#size'           => 50,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['icq_uin'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['icq_uin']['weight']) ? 0 : $field_weights['icq_uin']['weight'],
+      );
+    }
+
+    // Jabber/Google Talk
+    if ($fields['jabber'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['jabber'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['jabber']) ? $values['jabber'] : '',
+      );
+    }
+    elseif (!empty($fields['jabber'])) {
+      $form['jabber'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Jabber/Google Talk'),
+        '#default_value'  => isset($values['jabber']) ? $values['jabber'] : '',
+        '#size'           => 50,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['jabber'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['jabber']['weight']) ? 0 : $field_weights['jabber']['weight'],
+      );
+    }
+
+    // Skype
+    if ($fields['skype'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['skype'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['skype']) ? $values['skype'] : '',
+      );
+    }
+    elseif (!empty($fields['skype'])) {
+      $form['skype'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Skype'),
+        '#default_value'  => isset($values['skype']) ? $values['skype'] : '',
+        '#size'           => 50,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['skype'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['skype']['weight']) ? 0 : $field_weights['skype']['weight'],
+      );
+    }
+
+    return $form;
+  }
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function addresses_internet_theme() {
+  return array(
+    'addresses_internet_website' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_internet.inc',
+    ),
+    'addresses_internet_contact_email' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_internet.inc',
+    ),
+    'addresses_internet_aim' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_internet.inc',
+    ),
+    'addresses_internet_yim' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_internet.inc',
+    ),
+    'addresses_internet_icquin' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_internet.inc',
+    ),
+    'addresses_internet_jabber' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_internet.inc',
+    ),
+    'addresses_internet_skype' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_internet.inc',
+    ),
+  );
+}
+
+// vim: ts=2 sw=2 et syntax=php

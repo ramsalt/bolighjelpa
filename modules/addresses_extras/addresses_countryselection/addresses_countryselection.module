@@ -1,0 +1,22 @@
+<?php
+/**
+ * This module is a hack by Markus Petrux used to show
+ * the large list of countries as a set of checkboxes instead
+ * of a select list.
+ */
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function addresses_countryselection_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == '_addresses_settings') {
+    if (isset($form['addresses_country_list'])) {
+      // create columns using CSS (when screen & theme allow)
+      drupal_add_css(drupal_get_path('module', 'addresses_countryselection') .'/addresses_countryselection.css');
+      $form['addresses_country_list']['#type'] = 'checkboxes';
+      $form['addresses_country_list']['#checkall'] = TRUE;
+    }
+  }
+}
+
+// vim: ts=2 sw=2 et syntax=php

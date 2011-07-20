@@ -1,0 +1,128 @@
+// $Id: INSTALL.txt,v 1.5 2009/01/08 12:04:47 arto Exp $
+
+NOTE: This is experimental software meant for advanced users; assume nothing
+works, and you may be pleasantly surprised. And when it breaks, you get to
+keep both pieces.
+
+GETTING STARTED
+---------------
+At present, you will NOT be able to utilize this module unless you understand
+how to build exhibits in XHTML, as explained in the material at:
+
+  <http://simile.mit.edu/wiki/Exhibit/Getting_Started_Tutorial>
+
+Assuming that you have worked your way through the aforementioned tutorial,
+and are very familiar with Drupal in general, here's how to start using this
+module:
+
+  1. Install and enable the two included modules 'Exhibit' and
+     'Exhibit Drupal'.
+
+     The latter module generates Exhibit-compatible JSON data feeds of Drupal
+     users, nodes and taxonomy terms; you can do without this module if you
+     merely want to mash up external data sources (but in that case you won't
+     be needing these instructions).
+
+  2. Go to admin/content/exhibit and create two data feeds of the type
+     'Exhibit JSON'. You can give them any titles that make sense to you, as
+     long as you specify the following URLs:
+
+       exhibit/drupal/users
+       exhibit/drupal/nodes
+
+     These two data feeds will allow you to pull in information on all your
+     Drupal instance's users and nodes into the exhibits you create.
+
+  3. (This step can be skipped.)
+     If you have any taxonomy vocabularies you wish to utilize in exhibits,
+     you can create data feeds with URLs of the following form:
+
+       exhibit/drupal/terms/<VID>
+
+     Replace <VID> with the relevant numeric vocabulary ID.
+
+  4. (This step can be skipped.)
+     If you wish to obtain data feeds containing only a specific Drupal
+     content type, use feed URLs of the following form:
+
+      exhibit/drupal/nodes/<TYPE>
+
+     Replace <TYPE> with the machine-readable name of a content type, for
+     instance, 'page' or 'story'.
+
+  5. Go to node/add/exhibit to create an exhibit node. Give it any title and
+     description you wish, select some of the data feeds you've created,
+     and copy and paste the following into the Definition text box in order to
+     generate a minimalistic, very simple exhibit:
+
+       <div ex:role="viewPanel"><div ex:role="view"></div></div>
+
+  6. Save your exhibit node and view the results of your labors.
+     Congratulations, you should be seeing a not-very-pretty, but functional,
+     list of all the items in the data feeds you selected.
+
+  7. For anything fancier, familiarize yourself with all the material at:
+
+       <http://simile.mit.edu/wiki/Exhibit/For_Authors>
+
+     ...and/or collaborate with the author of this Drupal module to build a
+     snazzy, user-friendly UI for generating exhibit definitions.
+     
+EXHIBIT VIEWS
+-------------
+This module includes a module called 'Exhibit Views' that allows you to
+add Exhibit-compatible JSON data feeds to views defined using the Views module,
+available from:
+
+  <http://drupal.org/project/views>
+
+  1. Install and enable the two included modules 'Exhibit' and
+    'Exhibit Views'.
+
+  2. For any views you wish to utilize in exhibits, add a Feed display to the 
+    view by browsing to the view editor at:
+
+      admin/build/views/<VIEW NAME>
+
+    Replace <NAME> with the unique view name of the view in question, e.g.
+    'tracker'.  You can also browse for your view at:
+
+      admin/build/views
+
+  3. In the display list, select "Feed" from the drop down list and then click
+    on the "Add display" button.  Assign the feed an appropriate name (e.g. 
+    "Exhibit Feed"). Set the style to "Exhibit JSON" by click on the link
+    next to the "Style" label under the "Basic Settings" section.  After you
+    select Exhibit JSON, click on the "update" button.  You will be presented
+    with some options for the item type label and item type plural label.
+    These are used in the Exhibit feeds, and Exhibit itself, to describe the
+    types of items in your list.  So, if your displaying a list of Event node
+    types, use event and events for the type label and plural type label.
+    Click on the update button to save your settings.
+
+    Once you've selected the correct display style, click on the link next to
+    the "Row style" plugin, also found under the "Basic Settings" section
+    right below the Style settings.  Select the "Fields (Exhibit)" option and
+    then click on the update button.
+
+    Finally, assign a path that you would like this feed to be accessible
+    through under the "Feed Settings" and save your view.
+
+    It should be noted, that Exhibit expects dates to be in ISO 8601 format.
+    For each date or datetime field in your view that you want accessible
+    within your Exhibits, you must override the format settings to
+    "Y-m-d\TH:i:s". To do this, make sure the Exhibit feed display is
+    selected, click on the date field you wish to override, and you will be
+    presented with the field options.  Click on the "Override" button in the
+    upper right hand corner of the settings form, choose "Custom" from the
+    "Date format" field and enter "Y-m-d\TH:i:s" without quotes into the
+    Custom date format field. You can use this override function for other
+    fields to if you want a different label or settings specifically for the
+    Exhibit JSON feed.
+
+    Now that your View Exhibit feed is configured, you should be able to
+    create or edit and Exhibit node and see this feed in the list.  The feed
+    will be name with the format "view name: display title".  If your view was
+    "Events" and you named the Exhibit feed display "Exhibit JSON", you would
+    see "Events: Exhibit JSON" in the list of available Exhibit feeds.  Feeds
+    titles from Views2 will link to their corresponding views.

@@ -1,0 +1,13 @@
+/*
+ * CSS code used to attempt to show the list of countries
+ * in a neat table of multiple columns (1 to 3 depending
+ * on your screen width and theme.)
+ */
+#-addresses-settings .form-checkboxes .form-item {
+  display: block;
+  float: left;
+  width: 300px;
+}
+#-addresses-settings .description {
+  clear: both;
+}

@@ -1,0 +1,251 @@
+<?php
+/**
+ * @author Alexis Wilke
+ * @file addresses_names.module
+ * Use names (real, alias & business) fields on Addresses.
+ */
+
+/**
+ * Implementation of hook_addressfieldapi().
+ *
+ * Its a specific Addresses module hook function, to
+ * allow other modules to add more fields to the addresses
+ */
+function addresses_names_addressesfieldapi($op, $fields = array(), $values = array()) {
+  if ($op == 'fields') {
+    return array(
+      'first_name' => array(
+        'module'      => 'names',
+        'type'        => 'varchar',
+        'length'      => 75,
+        'description' => t('Your first name.'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('First Name'),
+        'theme'       => array(
+          'first_name'   => t('First Name.'),
+        ),
+        'token'       => 'addresses_general',
+      ),
+      'last_name' => array(
+        'module'      => 'names',
+        'type'        => 'varchar',
+        'length'      => 75,
+        'description' => t('Your last name.'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Last Name'),
+        'theme'       => array(
+          'last_name'    => t('Last Name.'),
+        ),
+        'token'       => 'addresses_general',
+      ),
+      'alias' => array(
+        'module'      => 'names',
+        'type'        => 'varchar',
+        'length'      => 75,
+        'description' => t('Alias'),
+        'display'     => ADDRESSES_FIELD_NONE,
+        'title'       => t('Alias'),
+        'theme'       => array(
+          'alias'        => t('Alias.'),
+        ),
+        'token'       => 'addresses_general',
+      ),
+      'business' => array(
+        'module'      => 'names',
+        'type'        => 'varchar',
+        'length'      => 75,
+        'description' => t('Business Name (dba)'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Business Name'),
+        'theme'       => array(
+          'business'     => t('Business Name.'),
+        ),
+        'token'       => 'addresses_adr',
+      ),
+      'bizcategory' => array(
+        'module'      => 'names',
+        'type'        => 'varchar',
+        'length'      => 75,
+        'description' => t('Business Category'),
+        'display'     => ADDRESSES_FIELD_SHOW,
+        'title'       => t('Business Category'),
+        'theme'       => array(
+          'bizcategory' => t('Business Category.'),
+        ),
+        'token'       => 'addresses_adr',
+      ),
+    );
+  }
+  elseif ($op == 'form') {
+    $field_weights = variable_get('addresses_field_weight', array());
+
+    // First name
+    if ($fields['first_name'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['first_name'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['first_name']) ? $values['first_name'] : '',
+      );
+    }
+    elseif (!empty($fields['first_name'])) {
+      $form['first_name'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('First Name'),
+        '#description'    => t('Name of your business point of contact.'),
+        '#default_value'  => isset($values['first_name']) ? $values['first_name'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 75,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['first_name'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['first_name']['weight']) ? 0 : $field_weights['first_name']['weight'],
+      );
+    }
+
+    // Last name
+    if ($fields['last_name'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['last_name'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['last_name']) ? $values['last_name'] : '',
+      );
+    }
+    elseif (!empty($fields['last_name'])) {
+      $form['last_name'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Last Name'),
+        '#description'    => t('Name of your business point of contact.'),
+        '#default_value'  => isset($values['last_name']) ? $values['last_name'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 75,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['last_name'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['last_name']['weight']) ? 0 : $field_weights['last_name']['weight'],
+      );
+    }
+
+    // Alias name
+    if ($fields['alias'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['alias'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['alias']) ? $values['alias'] : '',
+      );
+    }
+    elseif (!empty($fields['alias'])) {
+      $form['alias'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Alias'),
+        '#default_value'  => isset($values['alias']) ? $values['alias'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 75,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['alias'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['alias']['weight']) ? 0 : $field_weights['alias']['weight'],
+      );
+    }
+
+    // Business name
+    if ($fields['business'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['business'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['business']) ? $values['business'] : '',
+      );
+    }
+    elseif (!empty($fields['business'])) {
+      $form['business'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Business'),
+        '#default_value'  => isset($values['business']) ? $values['business'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 75,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['business'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['business']['weight']) ? 0 : $field_weights['business']['weight'],
+      );
+    }
+
+    // Category
+    if ($fields['bizcategory'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['bizcategory'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['bizcategory']) ? $values['bizcategory'] : '',
+      );
+    }
+    elseif (!empty($fields['bizcategory'])) {
+      $form['bizcategory'] = array(
+        '#type'           => 'textfield',
+        '#title'          => t('Category'),
+        '#default_value'  => isset($values['bizcategory']) ? $values['bizcategory'] : '',
+        '#size'           => 50,
+        '#maxlength'      => 75,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['bizcategory'] == ADDRESSES_FIELD_REQUIRED),
+        '#weight'         => empty($field_weights['bizcategory']['weight']) ? 0 : $field_weights['bizcategory']['weight'],
+      );
+    }
+
+    return $form;
+  }
+}
+
+
+
+/**
+ * Implementation of hook_theme().
+ */
+function addresses_names_theme() {
+  // we must include the $path because the addresses module will
+  // call those themes and this not find addresses_names.inc
+  $path = drupal_get_path('module', 'addresses_names');
+  return array(
+    'addresses_names_first_name' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => $path . '/addresses_names.inc',
+    ),
+    'addresses_names_last_name' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => $path . '/addresses_names.inc',
+    ),
+    'addresses_names_fullname' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => $path . '/addresses_names.inc',
+    ),
+    'addresses_names_alias' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => $path . '/addresses_names.inc',
+    ),
+    'addresses_names_business' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => $path . '/addresses_names.inc',
+    ),
+    'addresses_names_bizcategory' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => $path . '/addresses_names.inc',
+    ),
+  );
+}
+
+
+/**
+ * Implementation of hook_token_list().
+ */
+function addresses_names_token_list($type = 'all') {
+  if ($type == 'addresses_general' || $type == 'all') {
+    $tokens['Addresses: General']['addresses_fullname_fullname'] = 'Fullname';
+    return $tokens;
+  }
+}
+
+
+/**
+ * Implementation of hook_token_values().
+ */
+function addresses_names_token_values($type, $object = NULL) {
+  if ($type == 'addresses_general' || $type == 'all') {
+    $has_first_name = !empty($object['first_name']);
+    $has_last_name  = !empty($object['last_name']);
+    $values['addresses_fullname_fullname']   = $has_first_name && $has_last_name ? theme('addresses_names_fullname', $object)
+      : ($has_first_name ? theme('addresses_names_first_name', $object)
+        : ($has_last_name ? theme('addresses_names_last_name',  $object) : ''));
+    return $values;
+  }
+}
+
+// vim: ts=2 sw=2 et syntax=php

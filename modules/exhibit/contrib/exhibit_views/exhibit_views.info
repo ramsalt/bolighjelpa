@@ -1,0 +1,15 @@
+; $Id: exhibit_views.info,v 1.2 2008/07/17 11:51:07 arto Exp $
+name = Exhibit Views
+description = Provides Exhibit JSON data feeds of Views queries.
+package = SIMILE
+dependencies[] = exhibit
+dependencies[] = views
+core = 6.x
+php = 5.2
+
+; Information added by drupal.org packaging script on 2009-05-01
+version = "6.x-1.0-beta1"
+core = "6.x"
+project = "exhibit"
+datestamp = "1241155521"
+

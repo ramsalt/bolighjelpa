@@ -1,0 +1,3 @@
+<?php
+
+include_once('site_sito_content_types.features.inc');

@@ -1,0 +1,12 @@
+core            = "6.x"
+description     = "Add phone and fax fields on addresses"
+dependencies[]  = addresses
+name            = "Addresses - Phone/Fax"
+package         = "Addresses"
+
+; Information added by drupal.org packaging script on 2011-07-15
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "addresses"
+datestamp = "1310688145"
+

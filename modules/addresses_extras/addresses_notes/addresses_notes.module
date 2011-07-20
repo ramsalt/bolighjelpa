@@ -1,0 +1,70 @@
+<?php
+/**
+ * @author Alexis Wilke
+ * @file addresses_notes.module
+ * Use notes field on addresses.
+ */
+
+/**
+ * Implementation of hook_addressfieldapi().
+ *
+ * Its a specific Addresses module hook function, to
+ * allow other modules to add more fields to the addresses
+ */
+function addresses_notes_addressesfieldapi($op, $fields = array(), $values = array()) {
+  if ($op == 'fields') {
+    return array(
+      'notes' => array(
+        'module'      => 'notes',
+        'type'        => 'text',
+        'description' => t('Notes about this contact'),
+        'display'     => ADDRESSES_FIELD_NONE,
+        'title'       => t('Notes'),
+        'theme'       => array(
+          'notes'         => t('Notes.'),
+        ),
+        'token'       => 'addresses_general',
+      ),
+    );
+  }
+  elseif ($op == 'form') {
+    $field_weights = variable_get('addresses_field_weight', array());
+
+    // Notes
+    if ($fields['notes'] == ADDRESSES_FIELD_HIDDEN) {
+      $form['notes'] = array(
+        '#type'           => 'hidden',
+        '#value'          => isset($values['notes']) ? $values['notes'] : '',
+      );
+    }
+    elseif (!empty($fields['notes'])) {
+      $form['notes'] = array(
+        '#type'           => 'textarea',
+        '#title'          => t('Notes'),
+        '#default_value'  => isset($values['notes']) ? $values['notes'] : '',
+        '#rows'           => 8,
+        '#attributes'     => NULL,
+        '#required'       => ($fields['notes'] == ADDRESSES_FIELD_REQUIRED),
+        '#description'    => t('Enter notes about this contact.'),
+        '#weight'         => empty($field_weights['notes']['weight']) ? 0 : $field_weights['notes']['weight'],
+      );
+    }
+
+    return $form;
+  }
+}
+
+
+/**
+ * Implementation of hook_theme().
+ */
+function addresses_notes_theme() {
+  return array(
+    'addresses_notes_notes' => array(
+      'arguments' => array('form', 'format' => 'plain'),
+      'file'      => 'addresses_notes.inc',
+    ),
+  );
+}
+
+// vim: ts=2 sw=2 et syntax=php
