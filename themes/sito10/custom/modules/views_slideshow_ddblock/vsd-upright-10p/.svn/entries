@@ -1,0 +1,44 @@
+8
+
+dir
+688
+svn+ssh://ole@svn.ramsalt.com/media/data/code/projects/sito_web/trunk/sites/all/themes/sito10/custom/modules/views_slideshow_ddblock/vsd-upright-10p
+svn+ssh://ole@svn.ramsalt.com/media/data/code
+
+
+
+2011-03-29T19:14:44.781558Z
+45
+ole
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+4fc3c221-e4bb-45c9-97bc-c54e76f77a07
+
+images
+dir
+
+views-slideshow-ddblock-cycle-vsd-upright-10p.css
+file
+
+
+
+
+2011-05-18T22:19:54.000000Z
+692b1c379eb8cb96a989ada5c1fe1bb1
+2011-03-29T19:14:44.781558Z
+45
+ole
+has-props
+

@@ -1,0 +1,176 @@
+/* $Id: navigation.css,v 1.5 2009/11/04 19:42:41 johnalbin Exp $ */
+
+/**
+ * @file
+ * Navigation Styling
+ */
+
+
+/*
+ * The active item in a Drupal menu
+ */
+li a.active {
+
+}
+
+/*
+ * Navigation bar
+ */
+#navigation {
+}
+
+#navigation ul.menu li{
+  height: 30px;
+  list-style: none outside none;
+  margin: 19px 0px 19px 0px;
+  padding: 11px 12px;
+  border-right: 1px solid #424242;
+}
+#navigation ul.menu li.first{
+  padding-left: 0px;
+}
+#navigation ul.menu li.last{
+  border-right: none;
+}
+#navigation ul.menu li ul.menu li{
+  color: #909090;
+  background: none;
+  padding: 0px;
+  margin: 0 3px 0 0;
+  border: none;
+}
+#navigation ul.menu li ul.menu li a:after {
+  content: ","
+}
+#navigation ul.menu li ul.menu li.last a:after {
+  content: "";
+}
+#navigation ul.menu li a {
+  color: #EEEEEE;
+  font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
+  font-style: italic;
+  font-size: 1.54em;
+  text-decoration: none
+  font-weight: normal;
+}
+#navigation ul.menu li a.active, #navigation ul.menu li a:hover, #navigation ul.menu li ul.menu li a.active, #navigation ul.menu li ul.menu li a:hover {
+  color: #f8a81d;
+}
+
+#navigation ul.menu li ul.menu li a {
+  font-family: Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  font-size: 11px;
+  color: #909090;
+  font-style: normal;
+}
+.region-navigation {
+}
+
+/*
+ * Primary and Secondary menu links
+ */
+#main-menu {
+}
+
+#secondary-menu {
+}
+
+/*
+ * Menu blocks
+ */
+.block-menu {
+}
+
+/*
+ * "Menu block" blocks. See http://drupal.org/project/menu_block
+ */
+.block-menu_block {
+}
+ul.menu{
+  padding: 0px;
+  margin: 0px;
+}
+ul.menu li {
+  list-style-image: url("../images/li-pil.png");
+  list-style-position: inside;
+  padding: 7px 0px;
+}
+ul.menu ul.menu li{
+  padding: 0px;
+}
+ul.menu li a{
+  text-decoration: none;
+  font-size: 1.24em;
+  color: #EEEEEE;
+}
+ul.menu ul.menu{
+  background: #3C3C3C;
+  padding: 10px 0px 10px 17px;
+}
+ul.menu li li a{
+  font-size: 1em;
+}
+.sidebar ul.menu li{
+  border-bottom: 1px solid #797979;
+}
+.sidebar ul.menu li ul li{
+  border-bottom: none;
+}
+#skip-link a,
+#skip-link a:visited {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: -500px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  text-align: center;
+  background-color: #666;
+  color: #fff;
+}
+
+#venstremeny ul{
+  padding: 0px;
+  margin: 0px;
+}
+#venstremeny h2.title{
+  display: none;
+}
+#venstremeny ul  li {
+  list-style-image: url("images/li-pil.png");
+  list-style-position: inside;
+  padding: 7px 0px;
+}
+#venstremeny ul ul li{
+  padding: 0px;
+}
+#venstremeny ul li a{
+  text-decoration: none;
+  font-size: 1.24em;
+  color: #EEEEEE;
+}
+#venstremeny ul li a.active{
+	color: #f8a81d;
+}
+#venstremeny ul ul{
+  background: #3C3C3C;
+  padding: 10px 0px 10px 17px;
+}
+#venstremeny ul li li a{
+  font-size: 1em;
+}
+#venstremeny ul li{
+  border-bottom: 1px solid #797979;
+}
+#venstremeny ul li.views-row-first{
+  border-top: 1px solid #797979;
+}
+
+#venstremeny ul li ul li{
+  border-bottom: none;
+}
+#venstremeny .views-field-title{
+  display: inline;
+}
+
